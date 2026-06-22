@@ -30,6 +30,12 @@ const renderReceitaFoto = (tipoReceita, detalhesDaReceita) => (
   />
 );
 
+const renderReceitaTitulo = (tipoReceita, detalhesDaReceita) => (
+  <h3 data-testid="recipe-title">
+    { detalhesDaReceita[`str${tipoReceita === 'meals' ? 'Meal' : 'Drink'}`] }
+  </h3>
+);
+
 const ativarBotaoFinalizarReceita = (
   setDesativarBotaoFinalizar,
   listaIngredientesState,
@@ -157,7 +163,7 @@ function RecipeInProgress() {
     <div>
       { renderReceitaFoto(tipoReceita, detalhesDaReceita) }
 
-      <h3 data-testid="recipe-title">Receita em progresso</h3>
+      { renderReceitaTitulo(tipoReceita, detalhesDaReceita) }
 
       <input
         type="image"
