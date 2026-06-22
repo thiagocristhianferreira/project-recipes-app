@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  # react-scripts 3.4.1 (webpack 4) é incompatível com o OpenSSL 3 do
+  # Node 17+. A flag reativa o provider legado e corrige o erro
+  # ERR_OSSL_EVP_UNSUPPORTED no build de produção do Netlify.
+  NODE_OPTIONS = "--openssl-legacy-provider"
+  # Evita que warnings do ESLint do CRA quebrem o build (Netlify usa CI=true).
+  CI = "false"
