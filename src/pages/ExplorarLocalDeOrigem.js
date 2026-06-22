@@ -60,7 +60,7 @@ const ExplorarLocalDeOrigem = () => {
       ? await getAllComida()
       : await getComidaByArea(category);
     setDataComidas(allFood.meals);
-    setActualCategory(category);
+    setActualCategory(eatable === 'All' ? '' : category);
   }
 
   return (

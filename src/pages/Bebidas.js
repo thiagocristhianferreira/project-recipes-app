@@ -57,7 +57,7 @@ const Bebidas = () => {
       ? await getAllBebida()
       : await getBebidaByCategory(category);
     setDataBebidas(allFood.drinks);
-    setActualCategory(category);
+    setActualCategory(eatable === 'All' ? '' : category);
   }
 
   return (
