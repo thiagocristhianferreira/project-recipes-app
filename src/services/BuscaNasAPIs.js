@@ -9,7 +9,7 @@ export const getComidasByName = (nome) => (
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${nome}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ meals: null }) || console.log(error))
+    .catch(() => ({ meals: null }))
 );
 
 export const getBebidasRandom = () => (
@@ -23,35 +23,35 @@ export const getComidasByIngredientes = (ingrediente) => (
   fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingrediente}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ meals: null }) || console.log(error))
+    .catch(() => ({ meals: null }))
 );
 
 export const getComidasByPrimeiraLetra = (primeiraLetra) => (
   fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${primeiraLetra}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ meals: null }) || console.log(error))
+    .catch(() => ({ meals: null }))
 );
 
 export const getBebidasByingredientes = (ingrediente) => (
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${ingrediente}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ drinks: null }) || console.log(error))
+    .catch(() => ({ drinks: null }))
 );
 
 export const getBebidasByName = (nome) => (
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nome}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ drinks: null }) || console.log(error))
+    .catch(() => ({ drinks: null }))
 );
 
 export const getBebidasByPrimeiraLetra = (primeiraLetra) => (
   fetch(`https://www.thecocktaildb.com/api/json/v1/1/search.php?f=${primeiraLetra}`)
     .then((response) => response.json())
     .then((json) => json)
-    .catch((error) => ({ drinks: null }) || console.log(error))
+    .catch(() => ({ drinks: null }))
 );
 
 export const getAllComida = () => (
