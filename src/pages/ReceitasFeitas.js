@@ -40,7 +40,6 @@ const ReceitasFeitas = () => {
 
   const msgTime = 5000;
   const copiarURL = (tipo, id, e) => {
-    console.log(tipo);
     setRenderMSG(true);
     setTarget(e.target);
     setTimeout(() => { setRenderMSG(false); }, msgTime);
