@@ -9,3 +9,8 @@
   NODE_OPTIONS = "--openssl-legacy-provider"
   # Evita que warnings do ESLint do CRA quebrem o build (Netlify usa CI=true).
   CI = "false"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
