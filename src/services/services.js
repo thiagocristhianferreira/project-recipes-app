@@ -134,9 +134,8 @@ export const salvarReceitaFeita = (
   const dez = 10;
   const dataAtual = new Date();
   const ano = dataAtual.getFullYear();
-  const mes = dataAtual.getMonth() < dez
-    ? `0${dataAtual.getMonth()}`
-    : dataAtual.getMonth();
+  const mesAtual = dataAtual.getMonth() + 1;
+  const mes = mesAtual < dez ? `0${mesAtual}` : mesAtual;
   const dia = dataAtual.getDate() < dez ? `0${dataAtual.getDate()}` : dataAtual.getDate();
   const nomeReceita = tipoReceita === 'meals' ? 'strMeal' : 'strDrink';
   const imagemReceita = tipoReceita === 'meals' ? 'strMealThumb' : 'strDrinkThumb';
