@@ -11,6 +11,7 @@ import {
 
 const MAX_CARDS = 12;
 const MAX_CATEGORIES = 6;
+const toArray = (value) => (Array.isArray(value) ? value : []);
 
 const Bebidas = () => {
   const { dataByBusca, setHeaderInfo, barraBuscar } = useContext(ContextRecipes);
@@ -22,11 +23,11 @@ const Bebidas = () => {
   useEffect(() => {
     async function getCategorias() {
       const categoriasResult = await getBebidaCategory();
-      setCategorias([{ strCategory: 'All' }, ...categoriasResult.drinks]);
+      setCategorias([{ strCategory: 'All' }, ...toArray(categoriasResult.drinks)]);
     }
     async function getAll() {
       const allDrink = await getAllBebida();
-      setDataBebidas(allDrink.drinks);
+      setDataBebidas(toArray(allDrink.drinks));
     }
     if (barraBuscar.input === '') {
       getAll();
@@ -39,7 +40,8 @@ const Bebidas = () => {
   }, [setHeaderInfo]);
 
   useEffect(() => {
-    if (dataByBusca.drinks === null) {
+    if (dataByBusca.drinks === null
+      || (dataByBusca.drinks !== undefined && !Array.isArray(dataByBusca.drinks))) {
       return alert('Sinto muito, não encontramos nenhuma receita para esses filtros.');
     }
     if (dataByBusca.drinks !== undefined) {
@@ -56,7 +58,7 @@ const Bebidas = () => {
     const allFood = eatable === 'All'
       ? await getAllBebida()
       : await getBebidaByCategory(category);
-    setDataBebidas(allFood.drinks);
+    setDataBebidas(toArray(allFood.drinks));
     setActualCategory(eatable === 'All' ? '' : category);
   }
 

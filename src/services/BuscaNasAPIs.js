@@ -64,7 +64,15 @@ export const getAllComida = () => (
 export const getAllBebida = () => (
   fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=')
     .then((response) => response.json())
-    .then((json) => json)
+    .then((json) => {
+      if (Array.isArray(json.drinks)) return json;
+
+      return fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?f=a')
+        .then((response) => response.json())
+        .then((fallbackJson) => ({
+          drinks: Array.isArray(fallbackJson.drinks) ? fallbackJson.drinks : [],
+        }));
+    })
     .catch((error) => console.log(error))
 );
 
